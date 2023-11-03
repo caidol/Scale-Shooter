@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://qvoctlstfwsv"]
+
+[ext_resource type="Script" path="res://Scale_Shooter/Scripts/player.gd" id="1_kdpvi"]
+[ext_resource type="Texture2D" uid="uid://md24fyyokuu" path="res://Scale_Shooter/AssetLib/Graphics/m9.png" id="2_o8wwa"]
+[ext_resource type="Texture2D" uid="uid://32m3ps1hy01b" path="res://Scale_Shooter/AssetLib/Graphics/player.png" id="2_ri363"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quogk"]
+size = Vector2(139, 112)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_kdpvi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 1.90735e-06)
+scale = Vector2(4.03125, 4)
+texture = ExtResource("2_ri363")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(33.5, -8)
+shape = SubResource("RectangleShape2D_quogk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(58, -9.99998)
+scale = Vector2(3.8, 3.83333)
+texture = ExtResource("2_o8wwa")

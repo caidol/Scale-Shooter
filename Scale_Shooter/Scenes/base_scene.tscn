@@ -1,9 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://bka5ffkwikyf0"]
+[gd_scene load_steps=3 format=3 uid="uid://bka5ffkwikyf0"]
 
-[ext_resource type="Texture2D" uid="uid://cttpf7j6wi60f" path="res://icon.svg" id="1_1r7tw"]
+[ext_resource type="PackedScene" uid="uid://qvoctlstfwsv" path="res://Scale_Shooter/Scenes/player.tscn" id="1_khyxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nl34"]
+size = Vector2(1260.5, 197)
 
 [node name="BaseScene" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(571, 457)
-texture = ExtResource("1_1r7tw")
+[node name="Player" parent="." instance=ExtResource("1_khyxf")]
+position = Vector2(587, 273)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(593, 598)
+shape = SubResource("RectangleShape2D_6nl34")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -40.0
+offset_top = 499.0
+offset_right = 1224.0
+offset_bottom = 702.0
