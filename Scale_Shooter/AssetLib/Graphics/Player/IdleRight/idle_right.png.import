@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://md24fyyokuu"
-path="res://.godot/imported/m9.png-bba32eb5c2f15e6117b86748d53af5c1.ctex"
+uid="uid://cjd00rvkrhihp"
+path="res://.godot/imported/idle_right.png-644002f1ea8abaee22d751b54f3fe910.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/m9.png"
-dest_files=["res://.godot/imported/m9.png-bba32eb5c2f15e6117b86748d53af5c1.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Player/IdleRight/idle_right.png"
+dest_files=["res://.godot/imported/idle_right.png-644002f1ea8abaee22d751b54f3fe910.ctex"]
 
 [params]
 
