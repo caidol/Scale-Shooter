@@ -1,10 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://qvoctlstfwsv"]
+[gd_scene load_steps=26 format=3 uid="uid://qvoctlstfwsv"]
 
 [ext_resource type="Script" path="res://Scale_Shooter/Scripts/player.gd" id="1_kdpvi"]
 [ext_resource type="Texture2D" uid="uid://naela77ay707" path="res://Scale_Shooter/AssetLib/Graphics/Player/Idle/jon-idle-left.png" id="2_ubr05"]
 [ext_resource type="Texture2D" uid="uid://biwrhm60befn1" path="res://Scale_Shooter/AssetLib/Graphics/Player/Idle/jon-idle-right.png" id="3_aumbm"]
-[ext_resource type="Texture2D" uid="uid://clgwqsn7no2ua" path="res://Scale_Shooter/AssetLib/Graphics/Player/Jump/jon-jump-left.png" id="4_dkktf"]
-[ext_resource type="Texture2D" uid="uid://bbla3w0xhtg8l" path="res://Scale_Shooter/AssetLib/Graphics/Player/Jump/jon-jump-right.png" id="5_yhid8"]
+[ext_resource type="Texture2D" uid="uid://c5w6ic8qlpa3h" path="res://Scale_Shooter/AssetLib/Graphics/Player/Jump/jon-jump-left.png" id="4_dkktf"]
+[ext_resource type="Texture2D" uid="uid://cwqdnrl4yf6lm" path="res://Scale_Shooter/AssetLib/Graphics/Player/Jump/jon-jump-right.png" id="5_yhid8"]
 [ext_resource type="Texture2D" uid="uid://bou6fsgts10pb" path="res://Scale_Shooter/AssetLib/Graphics/Player/Move/jon-move-left.png" id="6_y35se"]
 [ext_resource type="Texture2D" uid="uid://cm1lynlxi1y15" path="res://Scale_Shooter/AssetLib/Graphics/Player/Move/jon-move-right.png" id="7_n2bjr"]
 
@@ -22,6 +22,22 @@ region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpnvb"]
 atlas = ExtResource("3_aumbm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4jj0"]
+atlas = ExtResource("4_dkktf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38d5y"]
+atlas = ExtResource("4_dkktf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caeuf"]
+atlas = ExtResource("5_yhid8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2um4"]
+atlas = ExtResource("5_yhid8")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_losx7"]
@@ -81,16 +97,22 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_dkktf")
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_f4jj0")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_38d5y")
 }],
 "loop": true,
 "name": &"JumpLeft",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_yhid8")
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_caeuf")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_o2um4")
 }],
 "loop": true,
 "name": &"JumpRight",
@@ -141,8 +163,8 @@ script = ExtResource("1_kdpvi")
 position = Vector2(2.00001, -1)
 scale = Vector2(6.84375, 6.59375)
 sprite_frames = SubResource("SpriteFrames_e0p0w")
-animation = &"IdleRight"
-autoplay = "IdleRight"
+animation = &"JumpRight"
+autoplay = "JumpRight"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 3)

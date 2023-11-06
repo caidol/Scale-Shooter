@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rkxkas3fad4o"
-path="res://.godot/imported/idle_left.png-94e6bb734e621a6bc9520f41670f8e66.ctex"
+uid="uid://cm1lynlxi1y15"
+path="res://.godot/imported/jon-move-right.png-2e75c21f4231b2c6bacee164b1e29dd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Player/IdleLeft/idle_left.png"
-dest_files=["res://.godot/imported/idle_left.png-94e6bb734e621a6bc9520f41670f8e66.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Move/jon-move-right.png"
+dest_files=["res://.godot/imported/jon-move-right.png-2e75c21f4231b2c6bacee164b1e29dd8.ctex"]
 
 [params]
 
