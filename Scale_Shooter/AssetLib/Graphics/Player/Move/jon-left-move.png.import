@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bou6fsgts10pb"
-path="res://.godot/imported/jon-move-left.png-207f116826d9851fda4ce36c7e3b58d7.ctex"
+uid="uid://c5ofvxtf23asi"
+path="res://.godot/imported/jon-left-move.png-79ac4b9a2447bfb358191904aa31a895.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Move/jon-move-left.png"
-dest_files=["res://.godot/imported/jon-move-left.png-207f116826d9851fda4ce36c7e3b58d7.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Move/jon-left-move.png"
+dest_files=["res://.godot/imported/jon-left-move.png-79ac4b9a2447bfb358191904aa31a895.ctex"]
 
 [params]
 
