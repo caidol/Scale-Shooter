@@ -141,9 +141,11 @@ script = ExtResource("1_kdpvi")
 position = Vector2(2.00001, -1)
 scale = Vector2(6.84375, 6.59375)
 sprite_frames = SubResource("SpriteFrames_e0p0w")
-animation = &"IdleRight"
+animation = &"JumpLeft"
 autoplay = "IdleRight"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_mkg0s")
+
+[node name="Timer" type="Timer" parent="."]
