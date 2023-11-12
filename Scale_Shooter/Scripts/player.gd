@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
-const SPEED = 900
-const JUMP_VELOCITY = -500.0
+const SPEED = 700
+const JUMP_VELOCITY = -1000.0
+var gravity = 2500 # Set a default value fpr gravity to determine how fast the player falls.
 @onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var prev_dir: int = 1 # Map 0 to looking left and 1 to right
 
-# Get the gravity from the project settings to be synced with node
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _process(_delta):
 	process_input()

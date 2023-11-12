@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://8kxkww4iu3i8" path="res://Scale_Shooter/AssetLib/Graphics/Player/Jump/jon-jump-right.png" id="5_yhid8"]
 [ext_resource type="Texture2D" uid="uid://c5ofvxtf23asi" path="res://Scale_Shooter/AssetLib/Graphics/Player/Move/jon-left-move.png" id="6_vg5iu"]
 [ext_resource type="Texture2D" uid="uid://6iaqp4mnxcpi" path="res://Scale_Shooter/AssetLib/Graphics/Player/Move/jon-right-move.png" id="7_0b7uo"]
+[ext_resource type="PackedScene" uid="uid://d2yvyl076navg" path="res://Scale_Shooter/Scenes/Items/weapon.tscn" id="8_8tctr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gdp0y"]
 atlas = ExtResource("2_ubr05")
@@ -131,19 +132,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkg0s"]
-size = Vector2(96, 167.5)
-
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 15
 script = ExtResource("1_kdpvi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.00001, -1)
-scale = Vector2(6.84375, 6.59375)
+position = Vector2(0, -1.90735e-06)
+scale = Vector2(5.07813, 4.70313)
 sprite_frames = SubResource("SpriteFrames_e0p0w")
 animation = &"IdleRight"
 autoplay = "IdleRight"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 3)
-shape = SubResource("RectangleShape2D_mkg0s")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(25, -19, 20, -19, 20, -33, 25, -33, 25, -47, 20, -47, 20, -52, 15, -52, 15, -57, -15, -57, -15, -52, -20, -52, -20, -33, -15, -33, -15, -28, -20, 14, -20, 28, -20, 52, -25, 52, -25, 61, -5, 61, -5, 56, -10, 56, -10, 52, -5, 52, -5, 42, 0, 42, 0, 33, 5, 33, 5, 61, 25, 61, 25, 56, 20, 56, 20, 42, 26, 42, 26, 33, 25, -5)
+
+[node name="Weapon" parent="." instance=ExtResource("8_8tctr")]
+position = Vector2(-369, -253)
