@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 700
+const SPEED = 700	
 const JUMP_VELOCITY = -1000.0
 var gravity = 2500 # Set a default value fpr gravity to determine how fast the player falls.
 @onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D

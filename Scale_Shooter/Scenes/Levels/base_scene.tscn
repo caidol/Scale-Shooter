@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bka5ffkwikyf0"]
 
-[ext_resource type="PackedScene" uid="uid://qvoctlstfwsv" path="res://Scale_Shooter/Scenes/player.tscn" id="1_khyxf"]
+[ext_resource type="PackedScene" uid="uid://qvoctlstfwsv" path="res://Scale_Shooter/Scenes/Entities/player.tscn" id="1_khyxf"]
 [ext_resource type="Texture2D" uid="uid://co5npj0sn4ol8" path="res://Scale_Shooter/AssetLib/Graphics/Tilesets/transparent_grassy.png" id="2_43kd0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n504y"]

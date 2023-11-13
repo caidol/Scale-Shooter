@@ -1,18 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2yvyl076navg"]
+[gd_scene load_steps=3 format=3 uid="uid://d2yvyl076navg"]
 
-[ext_resource type="Texture2D" uid="uid://md24fyyokuu" path="res://Scale_Shooter/AssetLib/Graphics/Weapons/m9.png" id="1_6xick"]
+[ext_resource type="Script" path="res://Scale_Shooter/Scripts/Items/weapon.gd" id="1_mcg48"]
+[ext_resource type="Texture2D" uid="uid://d3t0jp8fcky61" path="res://Scale_Shooter/AssetLib/Graphics/Weapons/scifi_pistol.png" id="2_t0jx8"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hq5oc"]
-radius = 19.0
-height = 40.0
-
-[node name="Weapon" type="CharacterBody2D"]
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_mcg48")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(488.75, 255)
-scale = Vector2(1.35, 1.33333)
-texture = ExtResource("1_6xick")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(487, 251)
-shape = SubResource("CapsuleShape2D_hq5oc")
+position = Vector2(0, 2.38419e-07)
+scale = Vector2(2.33125, 2.16667)
+texture = ExtResource("2_t0jx8")
