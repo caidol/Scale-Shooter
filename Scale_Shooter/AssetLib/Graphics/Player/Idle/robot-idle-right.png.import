@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biwrhm60befn1"
-path="res://.godot/imported/jon-idle-right.png-66df40c58dcff224abb8d96ddb21e5e3.ctex"
+uid="uid://bgffhwned7qf8"
+path="res://.godot/imported/robot-idle-right.png-90916963a7e2b559b4e7d3936c5c24dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Idle/jon-idle-right.png"
-dest_files=["res://.godot/imported/jon-idle-right.png-66df40c58dcff224abb8d96ddb21e5e3.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Idle/robot-idle-right.png"
+dest_files=["res://.godot/imported/robot-idle-right.png-90916963a7e2b559b4e7d3936c5c24dd.ctex"]
 
 [params]
 
