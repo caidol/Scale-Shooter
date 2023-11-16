@@ -90,8 +90,8 @@ sources/1 = SubResource("TileSetAtlasSource_n504y")
 [node name="Ground" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
-position = Vector2(593.5, 32.9999)
-scale = Vector2(1.57129, 0.99499)
+position = Vector2(595, -103.25)
+scale = Vector2(1.5743, 1.26804)
 texture = ExtResource("1_e8xs5")
 region_enabled = true
 region_rect = Rect2(2.74451, -1.57224, 996.9, 998.983)

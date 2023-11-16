@@ -118,16 +118,16 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g01le")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0a65s")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nf5w7")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4as75")
 }],
 "loop": true,
@@ -135,16 +135,16 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v2s72")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_wga0c")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3hxy6")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_72w6h")
 }],
 "loop": true,
@@ -163,7 +163,7 @@ script = ExtResource("1_aulef")
 position = Vector2(0, -1.90735e-06)
 scale = Vector2(5.07813, 4.70313)
 sprite_frames = SubResource("SpriteFrames_e0p0w")
-animation = &"MoveLeft"
+animation = &"MoveRight"
 autoplay = "IdleRight"
 
 [node name="Weapon" parent="." instance=ExtResource("8_rwy3g")]
