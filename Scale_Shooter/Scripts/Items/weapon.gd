@@ -2,7 +2,7 @@ extends Node2D
 
 # constant defs
 const angular_velocity: float = 0.3
-const weapon_radius: int = 120
+const weapon_radius: int = 120.9338662
 const scale_lower_bound: Vector2 = Vector2(0.5, 0.5)
 const scale_upper_bound: Vector2 = Vector2(4.5, 4.5)
 const gun_fixed_point: Vector2 = Vector2(120, -15) 
@@ -39,8 +39,30 @@ func scale_weapon():
 		position = gun_fixed_point + offset * Vector2(0.1, 0.1)
 
 func rotate_weapon():
-	# Retrieve the current mouse position and angle to mouse
-	var mouse_position = get_global_mouse_position()
-	var mouse_angle = player_node.position.angle_to(mouse_position)
+	# Retrive mouse and player position
+	var mouse_position: Array = [
+		get_global_mouse_position().x,
+		get_global_mouse_position().y
+	]
+	var player_position: Array = [
+		player_node.position.x, 
+		player_node.position.y
+	]
 	
-	# set the weapon position relative to mouse position
+	var angle = atan2(
+		mouse_position[1] - player_position[1],
+		mouse_position[0] - player_position[0]
+	)
+	
+	var weapon_x = player_position[0] + weapon_radius * cos(angle)
+	var weapon_y = player_position[1] + weapon_radius * sin(angle)
+
+	global_position = Vector2(weapon_x, weapon_y)
+	
+	rotation_degrees = angle * 180 / PI
+	print(angle * 180 / PI)
+	
+	# perform checks in terms of when to flip the weapon sprite upon passing over
+	# a certain limit 
+	
+	
