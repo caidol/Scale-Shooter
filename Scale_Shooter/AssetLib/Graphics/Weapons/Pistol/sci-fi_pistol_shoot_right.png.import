@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://md24fyyokuu"
-path="res://.godot/imported/m9.png-99631c96c83c27da27a23c5a7809ab2e.ctex"
+uid="uid://s2h5cqk68df1"
+path="res://.godot/imported/sci-fi_pistol_shoot_right.png-34113b4dbd4e5ff23744e52260c2321f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Weapons/m9.png"
-dest_files=["res://.godot/imported/m9.png-99631c96c83c27da27a23c5a7809ab2e.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Weapons/Pistol/sci-fi_pistol_shoot_right.png"
+dest_files=["res://.godot/imported/sci-fi_pistol_shoot_right.png-34113b4dbd4e5ff23744e52260c2321f.ctex"]
 
 [params]
 

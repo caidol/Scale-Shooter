@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3t0jp8fcky61"
-path="res://.godot/imported/scifi_pistol.png-19f50951585b2b0e1c4712e23d2e8e1b.ctex"
+uid="uid://b1mh5afamjs3y"
+path="res://.godot/imported/sci-fi_pistol_shoot_left.png-398a3807b816fdfef2805d064d5f0b15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Weapons/scifi_pistol.png"
-dest_files=["res://.godot/imported/scifi_pistol.png-19f50951585b2b0e1c4712e23d2e8e1b.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Weapons/Pistol/sci-fi_pistol_shoot_left.png"
+dest_files=["res://.godot/imported/sci-fi_pistol_shoot_left.png-398a3807b816fdfef2805d064d5f0b15.ctex"]
 
 [params]
 
