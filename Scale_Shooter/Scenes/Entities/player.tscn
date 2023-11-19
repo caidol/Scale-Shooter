@@ -153,7 +153,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjuo0"]
-size = Vector2(46, 106)
+size = Vector2(47, 104)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 15
@@ -167,8 +167,8 @@ animation = &"MoveRight"
 autoplay = "IdleRight"
 
 [node name="Weapon" parent="." instance=ExtResource("8_rwy3g")]
-position = Vector2(120, -15)
+position = Vector2(120, -60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, -6)
+position = Vector2(-2.5, -5)
 shape = SubResource("RectangleShape2D_fjuo0")

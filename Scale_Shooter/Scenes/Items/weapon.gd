@@ -9,12 +9,14 @@ const weapon_radius: int = sqrt(pow(gun_fixed_point[0], 2) + pow(gun_fixed_point
 @export var scale_upper_bound: Vector2 = Vector2(6.5, 6.5)
 @onready var player_node: CharacterBody2D = $".." # Retrieve player node to interact with it
 @onready var weapon_node: Node2D = $"."
-@onready var weapon_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var weapon_sprite: Sprite2D = $Idle
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var prev_angle = null
 
 func _ready():
-	print(player_node)
-
+	# Immediately update the weapon node to a mid scale -> Vector2(4.5, 4.5)
+	weapon_node.apply_scale(Vector2(3, 3))
+	
 func _process(_delta):
 	# Retrieve the current mouse position
 	
@@ -62,14 +64,22 @@ func rotate_weapon():
 	global_position = Vector2(weapon_x, weapon_y)
 	
 	rotation_degrees = angle * 180 / PI
-	#print(angle * 180 / PI)
 	
 	# perform checks in terms of when to flip the weapon sprite upon passing over
 	# a certain limit
-	
+	weapon_vflip(prev_angle, angle)
+	apply_input()
+
+func weapon_vflip(prev_angle, angle):
 	if (rotation_degrees >= -90 and rotation_degrees <= 90):
 		weapon_sprite.flip_v = false
+		$Shoot.flip_v = false
 	else:
 		weapon_sprite.flip_v = true
+		$Shoot.flip_v = true
 	
 	prev_angle = angle * 180 / PI
+	
+func apply_input():
+	if (Input.is_action_just_pressed("Left Click")):
+		animation_player.play("Shoot")
