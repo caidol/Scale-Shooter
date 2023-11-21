@@ -2,15 +2,17 @@ extends CharacterBody2D
 
 const SPEED = 700	
 const JUMP_VELOCITY = -1000.0
-var gravity = 2500 # Set a default value fpr gravity to determine how fast the player falls.
+var gravity = 2500 # Set a default value for gravity to determine how fast the player falls.
 var is_jumping: bool = false
 var mouse_angle: float
 var was_on_floor: bool
 @onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var jump_buffer: Timer = $JumpBuffer
 @onready var prev_dir: int = 1 # Map 0 to looking left and 1 to right
 
 func _process(_delta):
+	# Process the player input 
 	process_input()
 
 func process_input():
@@ -21,7 +23,7 @@ func process_input():
 	)
 	
 	# Allow the player to change jump direction in the air
-	if !is_on_floor():
+	if !is_on_floor(): 
 		if (Input.is_action_pressed("D") and prev_dir != 1):
 			sprite_animation.set_animation("JumpRight")
 			prev_dir = 1
@@ -31,7 +33,11 @@ func process_input():
 	
 	# Map the standard movement keys including jumping
 	if (Input.is_action_pressed("Space")):
-		is_jumping = true 
+		if (is_on_floor()):
+			# Start the jump buffer timer 
+			jump_buffer.start()
+			
+		is_jumping = true
 		
 		if prev_dir == 1:
 			sprite_animation.set_animation("JumpRight")
@@ -59,7 +65,7 @@ func _physics_process(delta):
 		else:
 			sprite_animation.animation = "JumpLeft"
 		
-		if (coyote_timer.time_left > 0 && !is_jumping):
+		if (!is_on_floor() && coyote_timer.time_left > 0):
 			velocity.y += 0 * delta
 		else:
 			velocity.y += gravity * delta
@@ -67,10 +73,13 @@ func _physics_process(delta):
 	# Handle Jump.
 	if (Input.is_action_pressed("Space") && is_on_floor()):
 		velocity.y = JUMP_VELOCITY
-	#elif (Input.is_action_pressed("Space") && coyote_timer.time_left > 0):
+	elif (Input.is_action_pressed("Space") && coyote_timer.time_left > 0):
 		# Apply jump velocity
-		#velocity.y = JUMP_VELOCITY
-		#coyote_timer.stop()
+		velocity.y = JUMP_VELOCITY
+		coyote_timer.stop()
+	elif (Input.is_action_pressed("Space") && !(is_on_floor()) && jump_buffer.time_left > 0): 
+		velocity.y = JUMP_VELOCITY
+		jump_buffer.stop()
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -87,3 +96,4 @@ func _physics_process(delta):
 func apply_coyote_time():
 	if (was_on_floor && !is_on_floor() && !is_jumping):
 		coyote_timer.start()
+
