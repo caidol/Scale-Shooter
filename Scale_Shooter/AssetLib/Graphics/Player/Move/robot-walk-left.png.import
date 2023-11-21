@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clgwqsn7no2ua"
-path="res://.godot/imported/jon-jump-left.png-a0ab9b049d568d4a14a321e1adb3dd14.ctex"
+uid="uid://c4fkonff60yyp"
+path="res://.godot/imported/robot-walk-left.png-1682a2c11540afc210d0e597bd322cfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Jump/jon-jump-left.png"
-dest_files=["res://.godot/imported/jon-jump-left.png-a0ab9b049d568d4a14a321e1adb3dd14.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Move/robot-walk-left.png"
+dest_files=["res://.godot/imported/robot-walk-left.png-1682a2c11540afc210d0e597bd322cfd.ctex"]
 
 [params]
 

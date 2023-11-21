@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2yvyl076navg"]
+
+[ext_resource type="Script" path="res://Scale_Shooter/Scenes/Items/weapon.gd" id="1_3e0r6"]
+[ext_resource type="Texture2D" uid="uid://84t6cn4n1jhd" path="res://Scale_Shooter/AssetLib/Graphics/Weapons/Pistol/sci-fi-pistol-pixilart.png" id="2_vkcvy"]
+[ext_resource type="Texture2D" uid="uid://s2h5cqk68df1" path="res://Scale_Shooter/AssetLib/Graphics/Weapons/Pistol/sci-fi_pistol_shoot_right.png" id="3_jotu7"]
+
+[sub_resource type="Animation" id="Animation_mh1ld"]
+resource_name = "Shoot Right"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shoot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 6, 0, 6, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Idle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.32),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shoot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.32),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jjs04"]
+_data = {
+"Shoot": SubResource("Animation_mh1ld")
+}
+
+[node name="Weapon" type="Node2D"]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_3e0r6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jjs04")
+}
+
+[node name="Shoot" type="Sprite2D" parent="."]
+position = Vector2(0, -0.833333)
+texture = ExtResource("3_jotu7")
+hframes = 7
+region_enabled = true
+region_rect = Rect2(0, 0, 224.34, 31.8283)
+
+[node name="Idle" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_vkcvy")

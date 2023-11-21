@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biwrhm60befn1"
-path="res://.godot/imported/jon-idle-right.png-66df40c58dcff224abb8d96ddb21e5e3.ctex"
+uid="uid://s2h5cqk68df1"
+path="res://.godot/imported/sci-fi_pistol_shoot_right.png-34113b4dbd4e5ff23744e52260c2321f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Idle/jon-idle-right.png"
-dest_files=["res://.godot/imported/jon-idle-right.png-66df40c58dcff224abb8d96ddb21e5e3.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Weapons/Pistol/sci-fi_pistol_shoot_right.png"
+dest_files=["res://.godot/imported/sci-fi_pistol_shoot_right.png-34113b4dbd4e5ff23744e52260c2321f.ctex"]
 
 [params]
 
