@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2tb0n0w21832"
-path="res://.godot/imported/night_time_mountains.png-dbf483be2a0cfdb7f8b958cb76525c64.ctex"
+uid="uid://b7dovum8emckm"
+path="res://.godot/imported/lamppost.png-e0d6c0714d2aa0926defa6858fb3218f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Background/night_time_mountains.png"
-dest_files=["res://.godot/imported/night_time_mountains.png-dbf483be2a0cfdb7f8b958cb76525c64.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Decorations/lamppost.png"
+dest_files=["res://.godot/imported/lamppost.png-e0d6c0714d2aa0926defa6858fb3218f.ctex"]
 
 [params]
 

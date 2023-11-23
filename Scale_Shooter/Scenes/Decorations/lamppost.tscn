@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://uwdpe84kcio6"]
+
+[ext_resource type="Texture2D" uid="uid://b7dovum8emckm" path="res://Scale_Shooter/AssetLib/Graphics/Decorations/lamppost.png" id="1_uspcd"]
+[ext_resource type="Texture2D" uid="uid://du4138tkd8uu2" path="res://Scale_Shooter/AssetLib/Graphics/Light/pixil-frame-0.png" id="2_exsfx"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Lamppost" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(2.95313, 2.79688)
+texture = ExtResource("1_uspcd")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-2.38419e-07, -39)
+scale = Vector2(15.8125, 15.75)
+color = Color(0.980392, 0.827451, 0.0941176, 1)
+energy = 2.14
+texture = ExtResource("2_exsfx")
