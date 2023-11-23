@@ -59,6 +59,7 @@ libraries = {
 }
 
 [node name="Shoot" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -0.833333)
 texture = ExtResource("3_jotu7")
 hframes = 7
@@ -66,5 +67,4 @@ region_enabled = true
 region_rect = Rect2(0, 0, 224.34, 31.8283)
 
 [node name="Idle" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_vkcvy")

@@ -7,8 +7,8 @@ var is_jumping: bool = false
 var mouse_angle: float
 var was_on_floor: bool
 @onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
-@onready var coyote_timer: Timer = $CoyoteTimer
-@onready var jump_buffer: Timer = $JumpBuffer
+@onready var coyote_timer: Timer = $Timers/CoyoteTimer
+@onready var jump_buffer: Timer = $Timers/JumpBuffer
 @onready var prev_dir: int = 1 # Map 0 to looking left and 1 to right
 
 func _process(_delta):
