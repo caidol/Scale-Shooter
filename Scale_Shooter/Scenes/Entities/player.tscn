@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://jd6hffoo8hqh" path="res://Scale_Shooter/AssetLib/Graphics/Player/Move/robot-walk-right.png" id="7_k8ohs"]
 [ext_resource type="PackedScene" uid="uid://d2yvyl076navg" path="res://Scale_Shooter/Scenes/Items/weapon.tscn" id="8_rwy3g"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgyqi"]
+radius = 23.0
+height = 104.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2euk"]
 atlas = ExtResource("3_kou8q")
 region = Rect2(0, 0, 32, 32)
@@ -152,13 +156,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgyqi"]
-radius = 23.0
-height = 104.0
-
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 15
 script = ExtResource("1_aulef")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -5)
+shape = SubResource("CapsuleShape2D_cgyqi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1.90735e-06)
@@ -168,7 +172,7 @@ animation = &"MoveRight"
 autoplay = "IdleRight"
 
 [node name="Weapon" parent="." instance=ExtResource("8_rwy3g")]
-position = Vector2(120, -60)
+position = Vector2(80, -60)
 
 [node name="Timers" type="Node2D" parent="."]
 position = Vector2(120, -60)
@@ -181,7 +185,3 @@ one_shot = true
 [node name="CoyoteTimer" type="Timer" parent="Timers"]
 wait_time = 0.2
 one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -5)
-shape = SubResource("CapsuleShape2D_cgyqi")
