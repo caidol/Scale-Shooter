@@ -2,7 +2,7 @@ extends Node2D
 
 # constant defs
 const angular_velocity: float = 0.3
-const gun_fixed_point: Vector2 = Vector2(120, -15)
+const gun_fixed_point: Vector2 = Vector2(80, -60)
 const weapon_radius: int = sqrt(pow(gun_fixed_point[0], 2) + pow(gun_fixed_point[1], 2))
 
 @export var scale_lower_bound: Vector2 = Vector2(1.5, 1.5)
