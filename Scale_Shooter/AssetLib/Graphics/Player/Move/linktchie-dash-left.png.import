@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jd6hffoo8hqh"
-path="res://.godot/imported/robot-walk-right.png-34442165e68ba6555be0122958d86d1b.ctex"
+uid="uid://n0k0nfbvii6g"
+path="res://.godot/imported/linktchie-dash-left.png-cf8d4311d6b662b0bf676e34f5478f83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Move/robot-walk-right.png"
-dest_files=["res://.godot/imported/robot-walk-right.png-34442165e68ba6555be0122958d86d1b.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Move/linktchie-dash-left.png"
+dest_files=["res://.godot/imported/linktchie-dash-left.png-cf8d4311d6b662b0bf676e34f5478f83.ctex"]
 
 [params]
 

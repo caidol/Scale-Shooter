@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5b1a03co6vq1"
-path="res://.godot/imported/robot-idle-left.png-9a432e47c5746475d46f70fbcc0eb674.ctex"
+uid="uid://w4efvscbua2h"
+path="res://.godot/imported/linktchie-walk-left.png-11ac7ac32b1412ec5b0d0092d1845b40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Idle/robot-idle-left.png"
-dest_files=["res://.godot/imported/robot-idle-left.png-9a432e47c5746475d46f70fbcc0eb674.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Player/Move/linktchie-walk-left.png"
+dest_files=["res://.godot/imported/linktchie-walk-left.png-11ac7ac32b1412ec5b0d0092d1845b40.ctex"]
 
 [params]
 
