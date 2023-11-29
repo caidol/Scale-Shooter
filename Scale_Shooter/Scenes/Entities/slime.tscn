@@ -1,25 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmos4hmkj44wx"]
+[gd_scene load_steps=10 format=3 uid="uid://cmos4hmkj44wx"]
 
-[ext_resource type="Texture2D" uid="uid://bjj053d6ipotb" path="res://Scale_Shooter/AssetLib/Graphics/Enemies/blue-slime.png" id="1_71bl2"]
-[ext_resource type="Script" path="res://Scale_Shooter/Scenes/Entities/slime.gd" id="1_gpmxl"]
+[ext_resource type="Script" path="res://Scale_Shooter/Scripts/Entities/slime.gd" id="1_ym5th"]
+[ext_resource type="Texture2D" uid="uid://bjj053d6ipotb" path="res://Scale_Shooter/AssetLib/Graphics/Enemies/slime-move-left.png" id="2_q05kb"]
+[ext_resource type="Texture2D" uid="uid://c1sqv7ldncbfy" path="res://Scale_Shooter/AssetLib/Graphics/Enemies/slime-move-right.png" id="3_rp0xw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_032co"]
 size = Vector2(23.1111, 18.5946)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6job8"]
+atlas = ExtResource("2_q05kb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r0tc"]
+atlas = ExtResource("3_rp0xw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1hxr"]
+atlas = ExtResource("2_q05kb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfle2"]
+atlas = ExtResource("3_rp0xw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ta0cb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6job8")
+}],
+"loop": true,
+"name": &"JumpLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5r0tc")
+}],
+"loop": true,
+"name": &"JumpRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1hxr")
+}],
+"loop": true,
+"name": &"MoveLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfle2")
+}],
+"loop": true,
+"name": &"MoveRight",
+"speed": 5.0
+}]
+
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 9
-script = ExtResource("1_gpmxl")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -5.96046e-08)
-scale = Vector2(3.46875, 3.25)
-texture = ExtResource("1_71bl2")
-hframes = 3
+script = ExtResource("1_ym5th")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 1.5)
 scale = Vector2(2.25, 2.3125)
 shape = SubResource("RectangleShape2D_032co")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(3.469, 3.25)
+sprite_frames = SubResource("SpriteFrames_ta0cb")
+animation = &"MoveLeft"
+autoplay = "MoveRight"
 
 [connection signal="in_jump_zone" from="." to="." method="_on_in_jump_zone"]

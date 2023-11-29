@@ -2,18 +2,35 @@ extends CharacterBody2D
 
 const SPEED = 700	
 const JUMP_VELOCITY = -1000.0
+const FLOOR_NORMAL = Vector2.UP
 var gravity = 2500 # Set a default value for gravity to determine how fast the player falls.
 var is_jumping: bool = false
 var mouse_angle: float
 var was_on_floor: bool
 @onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var head_torch: PointLight2D = $HeadTorch
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
 @onready var jump_buffer: Timer = $Timers/JumpBuffer
 @onready var prev_dir: int = 1 # Map 0 to looking left and 1 to right
 
+# test below
+var UP_LEFT: Vector2 = Global.UP + Global.LEFT
+var UP_RIGHT: Vector2 = Global.UP + Global.RIGHT
+
 func _process(_delta):
 	# Process the player input 
 	process_input()
+	
+	# * Important function to process all player physics and allow them to function
+	move_and_slide()
+	
+	# Fix the issue below where the player is unable to run up slopes by finding
+	# the angle to the floor and forming a normalised vector for the player to 
+	# travel along
+	
+	var floor_angle: float = get_floor_angle()
+	print("floor angle: ", floor_angle * (180 / PI))
+	print("floor normal: ", get_floor_normal())
 
 func process_input():
 	# Calculate angle of mouse from player 
@@ -26,9 +43,11 @@ func process_input():
 	if !is_on_floor(): 
 		if (Input.is_action_pressed("D") and prev_dir != 1):
 			sprite_animation.set_animation("JumpRight")
+			head_torch.position.x = -35.5
 			prev_dir = 1
 		elif (Input.is_action_pressed("A") and prev_dir != 0):
 			sprite_animation.set_animation("JumpLeft")
+			head_torch.position.x = 35.5
 			prev_dir = 0
 	
 	# Map the standard movement keys including jumping
@@ -41,21 +60,27 @@ func process_input():
 		
 		if prev_dir == 1:
 			sprite_animation.set_animation("JumpRight")
+			head_torch.position.x = -35.5
 		else:
 			sprite_animation.set_animation("JumpLeft")
+			head_torch.position.x = 35.5
 	elif (Input.is_action_pressed("A") and is_on_floor()):
 		sprite_animation.set_animation("MoveLeft")
+		head_torch.position.x = 35.5
 		prev_dir = 0
 	elif (Input.is_action_pressed("D") and is_on_floor()):
 		sprite_animation.set_animation("MoveRight")
+		head_torch.position.x = -35.5
 		prev_dir = 1
 	else:
 		if is_on_floor():
 			is_jumping = false
 			if ((mouse_angle * 180 / PI) < -90 || (mouse_angle * 180 / PI) > 90):
 				sprite_animation.set_animation("IdleLeft")
+				head_torch.position.x = 35.5
 			else:
 				sprite_animation.set_animation("IdleRight")
+				head_torch.position.x = -35.5
 	
 func _physics_process(delta):
 	# Add the gravity.
@@ -90,10 +115,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	was_on_floor = is_on_floor()
-	move_and_slide()
 	apply_coyote_time()
 	
 func apply_coyote_time():
 	if (was_on_floor && !is_on_floor() && !is_jumping):
 		coyote_timer.start()
-

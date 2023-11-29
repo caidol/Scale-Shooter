@@ -1,4 +1,4 @@
-extends "enemy.gd"
+extends "res://Scale_Shooter/Scripts/Entities/enemy.gd"
 
 signal in_jump_zone(delta)
 
@@ -9,6 +9,7 @@ var gravity: int = 2500
 var is_in_air: bool = false
 var has_jump_offset: bool = false
 var entered_jump_zone: bool = false
+@onready var slime_animation = $AnimatedSprite2D
 const RIGHT = Global.RIGHT
 const LEFT = Global.LEFT
 const UP = Global.UP 
@@ -23,8 +24,17 @@ func _ready():
 		_change_slime_state(SLIME_MOVING)
 
 func _change_slime_state(state):
+	var horizontal_direction = fix_direction_to_horizontal_axis(
+		vector_direction_to_player(position.x, position.y, target.position.x, target.position.y)
+	)
+	
+	if (horizontal_direction == RIGHT):
+		slime_animation.set_animation("MoveRight")
+	else:
+		slime_animation.set_animation("MoveLeft")
+	
 	match state:
-		SLIME_IDLE:
+		SLIME_IDLE:	
 			slime_current_state = SLIME_IDLE
 		SLIME_TARGET:
 			slime_current_state = SLIME_TARGET
@@ -37,6 +47,16 @@ func _physics_process(delta):
 	var state: int = slime_current_state
 	
 	if(!is_on_floor()):
+		var horizontal_direction = fix_direction_to_horizontal_axis(
+			vector_direction_to_player(position.x, position.y, target.position.x, target.position.y)
+		)
+		
+		if (horizontal_direction == RIGHT):
+			slime_animation.set_animation("JumpRight")
+		else:
+			slime_animation.set_animation("JumpLeft")
+		
+		has_jump_offset = true
 		velocity.y += gravity * delta
 	
 	match state:
@@ -53,6 +73,7 @@ func _physics_process(delta):
 			var direction = vector_direction_to_player(position.x, position.y, target.position.x, target.position.y)
 			
 			if (is_on_wall() || entered_jump_zone):
+				
 				is_in_air = true
 				slime_jump(delta)	
 			else:
@@ -66,47 +87,6 @@ func slime_jump(delta):
 	var target_pos: Array = [int(target.position.x), int(target.position.y)]
 	var slime_pos: Array = [int(position.x), int(position.y)]
 	
-	#var target_pos: Array = [1, 0]
-	#var slime_pos: Array = [4, 3]
-	
-	'''
-	# Create a parabola -> -ax^2 + bx + c for the slime to jump along
-	#
-	# Equation 1 -> target_pos[1] = a * (target_pos[0] ** 2) + b * (target_pos[0]) + c
-	# Equation 2 -> slime_pos[1] = a * (slime_pos[0] ** 2) + b * (slime_pos[0]) + c
-	
-	const weight = 8.0 / 10000
-	var a = (-weight * gravity)
-	
-	# Solve for b:
-	# 
-	# target_pos[1] - slime_pos[1] = a * (target_pos[0] ** 2 - slime_pos[0] ** 2) + b(target_pos[0] - slime_pos[0])
-	# 
-	# b = ((target_pos[1] - slime_pos[1]) - a * (target_pos[0] ** 2 - slime_pos[0] ** 2)) / (target_pos[0] - slime_pos[0])
-	
-	#var b = ((target_pos[1] - slime_pos[1]) - (-a) * (target_pos[0] ** 2 - slime_pos[0] ** 2)) / (target_pos[0] - slime_pos[0])
-	
-	var b = (
-		((slime_pos[1] - target_pos[1])
-		- (-a) * (target_pos[0] ** 2 - slime_pos[0] ** 2))
-		/ (slime_pos[0] - target_pos[0])
-	)
-	
-	# Solve for c:
-	#
-	# c = target_pos[1] - a * (target_pos[0] ** 2) - b * (target_pos[0])
-	#
-	# Note: The above can work with equation 2 also
-	
-	#var c = target_pos[1] - (-a) * (target_pos[0] ** 2) - b * (target_pos[0])
-	
-	var c = (
-		target_pos[1] - (-a) * (target_pos[0] ** 2) - b * (target_pos[0])
-	)
-	'''
-	
-	# Other idea below
-	
 	var constant = -150
 	var vertex = [int(target_pos[0] + ((slime_pos[0] - target_pos[0]) / 2)), target_pos[1] + constant]
 	print("vertex: ", vertex)
@@ -119,10 +99,8 @@ func slime_jump(delta):
 	# Check for a minimum distance where the slime is able to jump
 	if (abs(target_pos[0] - slime_pos[0]) > 50):
 		if (is_in_air && target_pos[0] < slime_pos[0]):
-			print("LEFT")
 			velocity.x -= 20 * base_speed * delta
 		elif (is_in_air && target_pos[0] > slime_pos[0]):
-			print("RIGHT")
 			velocity.x += 20 * base_speed * delta
 	
 		velocity.y = (a * ((position.x - vertex[0]) ** 2) + vertex[1]) * base_speed * delta	
