@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du4138tkd8uu2"
-path="res://.godot/imported/pixil-frame-0.png-21cb2e20369edf96bc90c5a2e8c87f31.ctex"
+uid="uid://bjj053d6ipotb"
+path="res://.godot/imported/slime-move-left.png-8d932b63ef05ee42e637dd28eaa4b8fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Light/pixil-frame-0.png"
-dest_files=["res://.godot/imported/pixil-frame-0.png-21cb2e20369edf96bc90c5a2e8c87f31.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Enemies/slime-move-left.png"
+dest_files=["res://.godot/imported/slime-move-left.png-8d932b63ef05ee42e637dd28eaa4b8fc.ctex"]
 
 [params]
 

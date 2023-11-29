@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjj053d6ipotb"
-path="res://.godot/imported/blue-slime.png-fb90a24ed5fda3c0497d2c960bcbd0ad.ctex"
+uid="uid://ddu3j5cn47ajq"
+path="res://.godot/imported/pixil-frame-0(2).png-64e24ef5c2195d33654ddb935b05d864.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scale_Shooter/AssetLib/Graphics/Enemies/blue-slime.png"
-dest_files=["res://.godot/imported/blue-slime.png-fb90a24ed5fda3c0497d2c960bcbd0ad.ctex"]
+source_file="res://Scale_Shooter/AssetLib/Graphics/Light/pixil-frame-0(2).png"
+dest_files=["res://.godot/imported/pixil-frame-0(2).png-64e24ef5c2195d33654ddb935b05d864.ctex"]
 
 [params]
 
