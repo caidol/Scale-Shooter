@@ -2,6 +2,7 @@ extends Node
 
 @onready var tree: SceneTree = get_tree()
 @onready var root: Window = get_tree().get_root()
+var gravity: int = 2500
 
 # All the four fixed axis directions
 const RIGHT = Vector2.RIGHT

@@ -11,20 +11,21 @@ const weapon_radius: int = sqrt(pow(gun_fixed_point[0], 2) + pow(gun_fixed_point
 @onready var weapon_node: Node2D = $"."
 @onready var weapon_sprite: Sprite2D = $Idle
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var laser_script = load("res://Scale_Shooter/Scripts/Projectiles/laser.gd").new()
 @onready var prev_angle = null
 
 func _ready():
 	# Immediately update the weapon node to a mid scale -> Vector2(4.5, 4.5)
 	weapon_node.apply_scale(Vector2(3, 3))
 	
-func _process(_delta):
+func _process(delta):
 	# Retrieve the current mouse position
 	
 	# Receive potential input to scale the weapon
 	scale_weapon()
 	
 	# Rotate the weapon around a circular motion at a fixed radius length from the player
-	rotate_weapon()
+	rotate_weapon(delta)
 
 func scale_weapon():
 	# Calculate the offset from the fixed point
@@ -42,7 +43,7 @@ func scale_weapon():
 		# Add offset to adjust position to maintain a fixed point
 		position = gun_fixed_point + offset * Vector2(0.1, 0.1)
 
-func rotate_weapon():
+func rotate_weapon(delta):
 	# Retrive mouse and player position
 	var mouse_position: Array = [
 		get_global_mouse_position().x,
@@ -68,7 +69,9 @@ func rotate_weapon():
 	# perform checks in terms of when to flip the weapon sprite upon passing over
 	# a certain limit
 	weapon_vflip(prev_angle, angle)
-	apply_input()
+	
+	# Check if laser needs to be played and shoot animation needs to be sent out
+	check_shoot(delta)
 
 func weapon_vflip(prev_angle, angle):
 	if (rotation_degrees >= -90 and rotation_degrees <= 90):
@@ -80,6 +83,11 @@ func weapon_vflip(prev_angle, angle):
 	
 	prev_angle = angle * 180 / PI
 	
-func apply_input():
+func check_shoot(delta):
 	if (Input.is_action_just_pressed("Left Click")):
 		animation_player.play("Shoot")
+		
+		#print(global_position
+		var weapon_direction: Vector2 = (global_position).normalized()
+		
+		laser_script.shoot_laser(weapon_direction, delta)
