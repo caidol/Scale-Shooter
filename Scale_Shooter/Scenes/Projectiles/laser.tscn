@@ -31,11 +31,9 @@ _data = {
 script = ExtResource("1_r1lk5")
 
 [node name="Shoot" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-6, 0)
 texture = ExtResource("1_kqnha")
 hframes = 11
-frame = 9
 
 [node name="Idle" type="Sprite2D" parent="."]
 visible = false

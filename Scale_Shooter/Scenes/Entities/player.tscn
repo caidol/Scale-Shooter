@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://qvoctlstfwsv"]
+[gd_scene load_steps=41 format=3 uid="uid://qvoctlstfwsv"]
 
 [ext_resource type="Script" path="res://Scale_Shooter/Scripts/Entities/player.gd" id="1_aulef"]
 [ext_resource type="Texture2D" uid="uid://hbgwrux0cdqc" path="res://Scale_Shooter/AssetLib/Graphics/Player/Idle/linktchie-idle-left.png" id="2_ah8lp"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://w4efvscbua2h" path="res://Scale_Shooter/AssetLib/Graphics/Player/Move/linktchie-walk-left.png" id="6_iefbi"]
 [ext_resource type="Texture2D" uid="uid://duorypyf543la" path="res://Scale_Shooter/AssetLib/Graphics/Player/Move/linktchie-walk-right.png" id="7_rtp52"]
 [ext_resource type="PackedScene" uid="uid://d2yvyl076navg" path="res://Scale_Shooter/Scenes/Items/weapon.tscn" id="8_rwy3g"]
-[ext_resource type="Texture2D" uid="uid://ddu3j5cn47ajq" path="res://Scale_Shooter/AssetLib/Graphics/Light/pixil-frame-0(2).png" id="9_g1qu6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lb7no"]
 atlas = ExtResource("2_ah8lp")
@@ -243,6 +242,13 @@ animations = [{
 radius = 23.0
 height = 88.0
 
+[sub_resource type="Gradient" id="Gradient_r63d1"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ej05o"]
+gradient = SubResource("Gradient_r63d1")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 31
 script = ExtResource("1_aulef")
@@ -276,5 +282,6 @@ one_shot = true
 position = Vector2(-33, 5)
 scale = Vector2(2, 2)
 color = Color(0.996078, 0.768627, 0.207843, 0.509804)
-energy = 8.93
-texture = ExtResource("9_g1qu6")
+energy = 3.5
+texture = SubResource("GradientTexture2D_ej05o")
+texture_scale = 2.0
