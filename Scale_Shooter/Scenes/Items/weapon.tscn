@@ -68,7 +68,8 @@ region_enabled = true
 region_rect = Rect2(0, 0, 224.34, 31.8283)
 
 [node name="Idle" type="Sprite2D" parent="."]
+position = Vector2(-5.83333, 0)
 texture = ExtResource("2_vkcvy")
 
 [node name="Laser" parent="." instance=ExtResource("4_x128n")]
-position = Vector2(19.1667, -2.5)
+position = Vector2(12.5, -3.33333)

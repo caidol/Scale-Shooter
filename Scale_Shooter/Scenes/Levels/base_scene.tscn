@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bka5ffkwikyf0"]
+[gd_scene load_steps=12 format=3 uid="uid://bka5ffkwikyf0"]
 
 [ext_resource type="Texture2D" uid="uid://bvpmjkuvh2xet" path="res://Scale_Shooter/AssetLib/Graphics/Background/night_time_sand_mountains.png" id="1_gpg5d"]
 [ext_resource type="PackedScene" uid="uid://qvoctlstfwsv" path="res://Scale_Shooter/Scenes/Entities/player.tscn" id="1_khyxf"]
@@ -229,9 +229,6 @@ size = Vector2(112, 125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nltcd"]
 size = Vector2(69.3359, 58.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve0g2"]
-size = Vector2(342.286, 74.4816)
-
 [node name="BaseScene" type="Node2D"]
 script = ExtResource("1_srjhu")
 
@@ -343,16 +340,8 @@ shape = SubResource("RectangleShape2D_nltcd")
 position = Vector2(120, -290)
 shape = SubResource("RectangleShape2D_nltcd")
 
-[node name="SlopeRegion" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SlopeRegion"]
-position = Vector2(1031, 46)
-rotation = -0.837758
-shape = SubResource("RectangleShape2D_ve0g2")
-
 [node name="Drone" parent="." instance=ExtResource("7_dpr5v")]
 position = Vector2(501, -556)
 
 [connection signal="area_entered" from="Exit/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="JumpZone/Area2D" to="Slime" method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="SlopeRegion" to="." method="_on_slope_region_area_entered"]
