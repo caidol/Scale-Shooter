@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://qvoctlstfwsv"]
+[gd_scene load_steps=44 format=3 uid="uid://qvoctlstfwsv"]
 
 [ext_resource type="Script" path="res://Scale_Shooter/Scripts/Entities/player.gd" id="1_aulef"]
 [ext_resource type="Texture2D" uid="uid://hbgwrux0cdqc" path="res://Scale_Shooter/AssetLib/Graphics/Player/Idle/linktchie-idle-left.png" id="2_ah8lp"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://w4efvscbua2h" path="res://Scale_Shooter/AssetLib/Graphics/Player/Move/linktchie-walk-left.png" id="6_iefbi"]
 [ext_resource type="Texture2D" uid="uid://duorypyf543la" path="res://Scale_Shooter/AssetLib/Graphics/Player/Move/linktchie-walk-right.png" id="7_rtp52"]
 [ext_resource type="PackedScene" uid="uid://d2yvyl076navg" path="res://Scale_Shooter/Scenes/Items/weapon.tscn" id="8_rwy3g"]
+[ext_resource type="AudioStream" uid="uid://c15tidp5eqwj0" path="res://Scale_Shooter/AssetLib/SFX/Player/Jump_Sfx.mp3" id="9_ggx5t"]
+[ext_resource type="AudioStream" uid="uid://dnknhxly7wtdl" path="res://Scale_Shooter/AssetLib/SFX/Player/Land_Sfx.mp3" id="10_j11ek"]
+[ext_resource type="AudioStream" uid="uid://10qdmtb8rm8h" path="res://Scale_Shooter/AssetLib/SFX/Player/Single_Footstep.mp3" id="11_ccli3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lb7no"]
 atlas = ExtResource("2_ah8lp")
@@ -285,3 +288,24 @@ color = Color(0.996078, 0.768627, 0.207843, 0.509804)
 energy = 3.5
 texture = SubResource("GradientTexture2D_ej05o")
 texture_scale = 2.0
+
+[node name="PlayerAudio" type="Node2D" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="PlayerAudio"]
+position = Vector2(-33, 5)
+scale = Vector2(2, 2)
+stream = ExtResource("9_ggx5t")
+autoplay = true
+
+[node name="Land" type="AudioStreamPlayer2D" parent="PlayerAudio"]
+position = Vector2(-33, 5)
+scale = Vector2(2, 2)
+stream = ExtResource("10_j11ek")
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="PlayerAudio"]
+position = Vector2(-33, 5)
+scale = Vector2(2, 2)
+stream = ExtResource("11_ccli3")
+volume_db = 5.0
+pitch_scale = 2.4
+autoplay = true

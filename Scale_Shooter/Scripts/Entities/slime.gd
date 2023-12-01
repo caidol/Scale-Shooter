@@ -7,7 +7,7 @@ var slime_current_state: int = SLIME_IDLE
 var slime_target_range = 300.0
 var gravity: int = 2500
 var is_in_air: bool = false
-var has_jump_offset: bool = false
+var has_jump_offset: bool = true
 var entered_jump_zone: bool = false
 @onready var slime_animation = $AnimatedSprite2D
 const RIGHT = Global.RIGHT
@@ -56,7 +56,6 @@ func _physics_process(delta):
 		else:
 			slime_animation.set_animation("JumpLeft")
 		
-		has_jump_offset = true
 		velocity.y += gravity * delta
 	
 	match state:
@@ -73,7 +72,6 @@ func _physics_process(delta):
 			var direction = vector_direction_to_player(position.x, position.y, target.position.x, target.position.y)
 			
 			if (is_on_wall() || entered_jump_zone):
-				
 				is_in_air = true
 				slime_jump(delta)	
 			else:
@@ -99,15 +97,23 @@ func slime_jump(delta):
 	# Check for a minimum distance where the slime is able to jump
 	if (abs(target_pos[0] - slime_pos[0]) > 50):
 		if (is_in_air && target_pos[0] < slime_pos[0]):
+			if (has_jump_offset):
+				velocity.x += 40
+				has_jump_offset = false
+				
 			velocity.x -= 20 * base_speed * delta
 		elif (is_in_air && target_pos[0] > slime_pos[0]):
+			if (has_jump_offset):
+				velocity.x -= 40
+				has_jump_offset = false
+				
 			velocity.x += 20 * base_speed * delta
 	
 		velocity.y = (a * ((position.x - vertex[0]) ** 2) + vertex[1]) * base_speed * delta	
 	
 	if (is_on_floor()):
 		is_in_air = false
-		has_jump_offset = false
+		has_jump_offset = true
 		
 	if (entered_jump_zone):
 		entered_jump_zone = false

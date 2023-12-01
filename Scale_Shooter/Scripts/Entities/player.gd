@@ -11,7 +11,12 @@ var was_on_floor: bool
 @onready var head_torch: PointLight2D = $HeadTorch
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
 @onready var jump_buffer: Timer = $Timers/JumpBuffer
+@onready var jump_audio: AudioStreamPlayer2D = $PlayerAudio/Jump
+@onready var land_audio: AudioStreamPlayer2D = $PlayerAudio/Land
+@onready var walk_audio: AudioStreamPlayer2D = $PlayerAudio/Walk
 @onready var prev_dir: int = 1 # Map 0 to looking left and 1 to right
+
+@export var player_health: int = 100
 
 # test below
 var UP_LEFT: Vector2 = Global.UP + Global.LEFT
@@ -29,8 +34,14 @@ func _process(_delta):
 	# travel along
 	
 	var floor_angle: float = get_floor_angle()
-	print("floor angle: ", floor_angle * (180 / PI))
-	print("floor normal: ", get_floor_normal())
+	#print("floor angle: ", floor_angle * (180 / PI))
+	#print("floor normal: ", get_floor_normal())
+	
+	# Play relevant audio files
+	if (Input.is_action_just_pressed("Space")):
+		jump_audio.play()
+	elif (Input.is_action_just_pressed("A") || Input.is_action_pressed(("D"))):
+		walk_audio.play()
 
 func process_input():
 	# Calculate angle of mouse from player 
@@ -55,7 +66,7 @@ func process_input():
 		if (is_on_floor()):
 			# Start the jump buffer timer 
 			jump_buffer.start()
-			
+
 		is_jumping = true
 		
 		if prev_dir == 1:
@@ -74,6 +85,9 @@ func process_input():
 		prev_dir = 1
 	else:
 		if is_on_floor():
+			if (!was_on_floor):
+				land_audio.play()
+			
 			is_jumping = false
 			if ((mouse_angle * 180 / PI) < -90 || (mouse_angle * 180 / PI) > 90):
 				sprite_animation.set_animation("IdleLeft")

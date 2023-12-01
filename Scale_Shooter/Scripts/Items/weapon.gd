@@ -5,13 +5,17 @@ const angular_velocity: float = 0.3
 const gun_fixed_point: Vector2 = Vector2(80, -60)
 const weapon_radius: int = sqrt(pow(gun_fixed_point[0], 2) + pow(gun_fixed_point[1], 2))
 
+signal laser_appears(delta, direction: Vector2)
+
 @export var scale_lower_bound: Vector2 = Vector2(1.5, 1.5)
 @export var scale_upper_bound: Vector2 = Vector2(6.5, 6.5)
 @onready var player_node: CharacterBody2D = $".." # Retrieve player node to interact with it
 @onready var weapon_node: Node2D = $"."
+@onready var ScaleUp: AudioStreamPlayer2D = $Audio/ScaleUp
+@onready var ScaleDown: AudioStreamPlayer2D = $Audio/ScaleDown
 @onready var weapon_sprite: Sprite2D = $Idle
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var laser_script = load("res://Scale_Shooter/Scripts/Projectiles/laser.gd").new()
+@onready var projectile_scene: PackedScene = preload("res://Scale_Shooter/Scenes/Projectiles/projectile.tscn")
 @onready var prev_angle = null
 
 func _ready():
@@ -32,12 +36,14 @@ func scale_weapon():
 	var offset = position - gun_fixed_point
 	
 	if (Input.is_action_just_released("Mouse wheel up") && weapon_node.scale < scale_upper_bound):
+		ScaleUp.play()
 		weapon_node.scale += Vector2(0.5, 0.5)
 		
 		# Subtract offset position to maintain fixed point
 		position = gun_fixed_point - offset * Vector2(0.1, 0.1)
 		
 	elif (Input.is_action_just_released("Mouse wheel down") && weapon_node.scale > scale_lower_bound):
+		ScaleDown.play()
 		weapon_node.scale -= Vector2(0.5, 0.5)
 		
 		# Add offset to adjust position to maintain a fixed point
@@ -87,7 +93,9 @@ func check_shoot(delta):
 	if (Input.is_action_just_pressed("Left Click")):
 		animation_player.play("Shoot")
 		
-		#print(global_position
+		#print(global_position)
 		var weapon_direction: Vector2 = (global_position).normalized()
 		
-		laser_script.shoot_laser(weapon_direction, delta)
+		var projectile = projectile_scene.instantiate()
+		add_child(projectile)
+		laser_appears.emit(delta, weapon_direction)
