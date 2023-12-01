@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2yvyl076navg"]
+[gd_scene load_steps=10 format=3 uid="uid://d2yvyl076navg"]
 
-[ext_resource type="Script" path="res://Scale_Shooter/Scenes/Items/weapon.gd" id="1_3e0r6"]
+[ext_resource type="Script" path="res://Scale_Shooter/Scripts/Items/weapon.gd" id="1_6tryj"]
 [ext_resource type="Texture2D" uid="uid://84t6cn4n1jhd" path="res://Scale_Shooter/AssetLib/Graphics/Weapons/Pistol/sci-fi-pistol-pixilart.png" id="2_vkcvy"]
 [ext_resource type="Texture2D" uid="uid://s2h5cqk68df1" path="res://Scale_Shooter/AssetLib/Graphics/Weapons/Pistol/sci-fi_pistol_shoot_right.png" id="3_jotu7"]
+[ext_resource type="AudioStream" uid="uid://btm3m3ncdj42j" path="res://Scale_Shooter/AssetLib/SFX/Weapon/scale_up.mp3" id="5_s8x6x"]
+[ext_resource type="AudioStream" uid="uid://qvp5py8kjsam" path="res://Scale_Shooter/AssetLib/SFX/Weapon/scale_down.mp3" id="6_kbwt7"]
+[ext_resource type="AudioStream" uid="uid://bj375nwvg4hr3" path="res://Scale_Shooter/AssetLib/SFX/Weapon/shoot.mp3" id="7_6icla"]
+[ext_resource type="PackedScene" uid="uid://bdx4fl308206e" path="res://Scale_Shooter/Scenes/UI/ui.tscn" id="7_poege"]
 
 [sub_resource type="Animation" id="Animation_mh1ld"]
 resource_name = "Shoot Right"
@@ -51,7 +55,7 @@ _data = {
 
 [node name="Weapon" type="Node2D"]
 scale = Vector2(1.2, 1.2)
-script = ExtResource("1_3e0r6")
+script = ExtResource("1_6tryj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -68,3 +72,21 @@ region_rect = Rect2(0, 0, 224.34, 31.8283)
 [node name="Idle" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("2_vkcvy")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="ScaleUp" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_s8x6x")
+volume_db = 24.0
+pitch_scale = 2.5
+
+[node name="ScaleDown" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_kbwt7")
+volume_db = 24.0
+pitch_scale = 2.5
+
+[node name="Laser" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_6icla")
+volume_db = 1.0
+
+[node name="UI" parent="." instance=ExtResource("7_poege")]

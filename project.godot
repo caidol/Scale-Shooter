@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="Scale_shooter"
-run/main_scene="res://Scale_Shooter/Scenes/Levels/base_scene.tscn"
+run/main_scene="res://Scale_Shooter/Scenes/UI/menu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Scale_Shooter/Scripts/Global.gd"
+
 [display]
 
-window/size/mode=3
 window/stretch/mode="viewport"
 
 [input]
@@ -69,6 +72,7 @@ Space={
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Items"
 2d_physics/layer_4="Tiles"
+2d_physics/layer_5="Projectiles"
 
 [rendering]
 
