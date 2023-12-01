@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdx4fl308206e"]
+
+[ext_resource type="Texture2D" uid="uid://b6lwiayvvjwi2" path="res://Scale_Shooter/AssetLib/Graphics/UI/heart.png" id="1_0cqrh"]
+[ext_resource type="Texture2D" uid="uid://cuwl0i64t4gj" path="res://Scale_Shooter/AssetLib/Graphics/UI/under.png" id="1_b0tlc"]
+[ext_resource type="Script" path="res://Scale_Shooter/Scenes/UI/ui.gd" id="1_v4h08"]
+[ext_resource type="Texture2D" uid="uid://dby81hthplj41" path="res://Scale_Shooter/AssetLib/Graphics/UI/outline.png" id="2_mfgtt"]
+[ext_resource type="Texture2D" uid="uid://0cbetexahqbb" path="res://Scale_Shooter/AssetLib/Graphics/UI/progress.png" id="3_p2h7r"]
+[ext_resource type="Texture2D" uid="uid://hiufpt71nyl7" path="res://Scale_Shooter/AssetLib/Graphics/UI/energy_progress.png" id="4_ttgva"]
+[ext_resource type="Texture2D" uid="uid://cinimi6yucwfi" path="res://Scale_Shooter/AssetLib/Graphics/UI/energy.png" id="5_5qbay"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_v4h08")
+
+[node name="ProgressBars" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -333.0
+offset_top = -159.0
+offset_right = -240.0
+offset_bottom = -127.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(8, 8)
+theme_override_constants/separation = 29
+
+[node name="HealthBar" type="TextureProgressBar" parent="ProgressBars"]
+layout_mode = 2
+step = 20.0
+value = 60.0
+texture_under = ExtResource("1_b0tlc")
+texture_over = ExtResource("2_mfgtt")
+texture_progress = ExtResource("3_p2h7r")
+
+[node name="EnergyBar" type="TextureProgressBar" parent="ProgressBars"]
+layout_mode = 2
+step = 10.0
+value = 60.0
+texture_under = ExtResource("1_b0tlc")
+texture_over = ExtResource("2_mfgtt")
+texture_progress = ExtResource("4_ttgva")
+
+[node name="Heart" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -307.0
+offset_top = -86.0
+offset_right = -207.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Heart"]
+layout_mode = 1
+offset_left = -54.0
+offset_top = -7.0
+offset_right = 66.0
+offset_bottom = 113.0
+texture = ExtResource("1_0cqrh")
+
+[node name="Energy" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Energy"]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 590.0
+offset_right = 811.0
+offset_bottom = 650.0
+texture = ExtResource("5_5qbay")

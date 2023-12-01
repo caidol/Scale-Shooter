@@ -3,9 +3,16 @@ extends "res://Scale_Shooter/Scripts/Entities/enemy.gd"
 enum {DRONE_IDLE, DRONE_TARGET}
 
 @onready var drone_animation = $AnimatedSprite2D
+@onready var health: int = 100
 var drone_current_state: int = DRONE_IDLE 
 var drone_target_range = 300.0
 var gravity: int = 2500
+
+signal has_died
+
+func _process(delta):
+	if (health <= 0):
+		has_died.emit()
 
 func _change_drone_state(state):
 	var player_angle = atan2(abs(target.position.y - position.y), abs(target.position.x - position.x))
@@ -40,3 +47,5 @@ func _physics_process(delta):
 			
 			# Move the drone so that it's targeting whichever direction that the player is in
 			position += direction * base_speed * delta
+
+	move_and_slide()

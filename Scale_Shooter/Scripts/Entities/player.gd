@@ -14,15 +14,18 @@ var was_on_floor: bool
 @onready var jump_audio: AudioStreamPlayer2D = $PlayerAudio/Jump
 @onready var land_audio: AudioStreamPlayer2D = $PlayerAudio/Land
 @onready var walk_audio: AudioStreamPlayer2D = $PlayerAudio/Walk
+@onready var player_health_bar = $UI/ProgressBars/HealthBar
 @onready var prev_dir: int = 1 # Map 0 to looking left and 1 to right
 
-@export var player_health: int = 100
+@export var health: int = 100
 
-# test below
-var UP_LEFT: Vector2 = Global.UP + Global.LEFT
-var UP_RIGHT: Vector2 = Global.UP + Global.RIGHT
+signal has_been_damaged
+signal has_died
 
 func _process(_delta):
+	if (health <= 0):
+		has_died.emit()
+	
 	# Process the player input 
 	process_input()
 	
@@ -134,3 +137,7 @@ func _physics_process(delta):
 func apply_coyote_time():
 	if (was_on_floor && !is_on_floor() && !is_jumping):
 		coyote_timer.start()
+		
+func _on_collision_boundary_body_entered(body):
+	if ((body.name).substr(0, 5) == "Slime" || (body.name).substr(0, 5) == "Drone"):
+		health -= 20

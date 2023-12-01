@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://qvoctlstfwsv"]
+[gd_scene load_steps=45 format=3 uid="uid://qvoctlstfwsv"]
 
 [ext_resource type="Script" path="res://Scale_Shooter/Scripts/Entities/player.gd" id="1_aulef"]
 [ext_resource type="Texture2D" uid="uid://hbgwrux0cdqc" path="res://Scale_Shooter/AssetLib/Graphics/Player/Idle/linktchie-idle-left.png" id="2_ah8lp"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://c15tidp5eqwj0" path="res://Scale_Shooter/AssetLib/SFX/Player/Jump_Sfx.mp3" id="9_ggx5t"]
 [ext_resource type="AudioStream" uid="uid://dnknhxly7wtdl" path="res://Scale_Shooter/AssetLib/SFX/Player/Land_Sfx.mp3" id="10_j11ek"]
 [ext_resource type="AudioStream" uid="uid://10qdmtb8rm8h" path="res://Scale_Shooter/AssetLib/SFX/Player/Single_Footstep.mp3" id="11_ccli3"]
+[ext_resource type="PackedScene" uid="uid://bdx4fl308206e" path="res://Scale_Shooter/Scenes/UI/ui.tscn" id="12_6isrp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lb7no"]
 atlas = ExtResource("2_ah8lp")
@@ -253,7 +254,7 @@ fill_from = Vector2(1, 1)
 fill_to = Vector2(0, 0)
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 31
+collision_mask = 30
 script = ExtResource("1_aulef")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -309,3 +310,5 @@ stream = ExtResource("11_ccli3")
 volume_db = 5.0
 pitch_scale = 2.4
 autoplay = true
+
+[node name="UI" parent="." instance=ExtResource("12_6isrp")]

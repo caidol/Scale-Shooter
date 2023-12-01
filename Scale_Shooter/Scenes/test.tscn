@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxbeqgp0h7tyv"]
+
+[ext_resource type="Texture2D" uid="uid://d2h3vqn4fmldl" path="res://Scale_Shooter/AssetLib/Graphics/Projectiles/laser-right.png" id="1_srsfa"]
+
+[node name="test" type="Node2D"]
+rotation = 0.000474215
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_srsfa")

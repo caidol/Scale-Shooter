@@ -9,12 +9,15 @@ var gravity: int = 2500
 var is_in_air: bool = false
 var has_jump_offset: bool = true
 var entered_jump_zone: bool = false
-@onready var slime_animation = $AnimatedSprite2D
 const RIGHT = Global.RIGHT
 const LEFT = Global.LEFT
-const UP = Global.UP 
+const UP = Global.UP
+@onready var slime_node: CharacterBody2D = $"."
+@onready var slime_animation = $AnimatedSprite2D
+@onready var health: int = 100
 
 enum {SLIME_IDLE, SLIME_TARGET, SLIME_MOVING, DIE}
+signal has_died
 
 func _ready():
 	# Check the slime's current state depending on exported idle variable and set correct state
@@ -22,6 +25,10 @@ func _ready():
 		_change_slime_state(SLIME_IDLE)
 	else:
 		_change_slime_state(SLIME_MOVING)
+
+func _process(delta):
+	if (health <= 0):
+		has_died.emit()
 
 func _change_slime_state(state):
 	var horizontal_direction = fix_direction_to_horizontal_axis(
@@ -81,13 +88,13 @@ func _physics_process(delta):
 				
 	move_and_slide()
 
+
 func slime_jump(delta):
 	var target_pos: Array = [int(target.position.x), int(target.position.y)]
 	var slime_pos: Array = [int(position.x), int(position.y)]
 	
 	var constant = -150
 	var vertex = [int(target_pos[0] + ((slime_pos[0] - target_pos[0]) / 2)), target_pos[1] + constant]
-	print("vertex: ", vertex)
 	
 	# Solve for a 
 	var a = float(target_pos[1] - vertex[1]) / ((target_pos[0] - vertex[0]) ** 2)
@@ -129,8 +136,11 @@ func fix_direction_to_horizontal_axis(direction):
 	else:
 		return LEFT
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	in_jump_zone.emit()
-
-func _on_in_jump_zone(delta):
+	
+func _on_in_jump_zone(_delta):
 	entered_jump_zone = true
+
+func _on_has_died():
+	slime_node.queue_free()

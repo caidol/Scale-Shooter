@@ -21,12 +21,6 @@ var root: Window = Global.root
 
 @onready var target = get_tree().get_root().get_node("BaseScene").get_node("Player")
 
-func _ready():
-	pass
-	
-func _process(_delta):
-	pass
-	
 func vector_direction_to_player(enemy_x, enemy_y, target_x, target_y):
 	# Return a normalised vector that points the exact direction that the player is located at
 	# away from the enemy

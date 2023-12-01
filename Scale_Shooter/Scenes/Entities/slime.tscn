@@ -75,4 +75,12 @@ sprite_frames = SubResource("SpriteFrames_ta0cb")
 animation = &"MoveLeft"
 autoplay = "MoveRight"
 
+[node name="CollisionBoundary" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBoundary"]
+position = Vector2(2, 1.5)
+scale = Vector2(2.25, 2.3125)
+shape = SubResource("RectangleShape2D_032co")
+
+[connection signal="has_died" from="." to="." method="_on_has_died"]
 [connection signal="in_jump_zone" from="." to="." method="_on_in_jump_zone"]

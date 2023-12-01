@@ -102,7 +102,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayo1u"]
-size = Vector2(88, 77)
+size = Vector2(70, 50.25)
 
 [node name="Drone" type="CharacterBody2D"]
 collision_layer = 2
@@ -117,5 +117,11 @@ animation = &"MoveRight"
 autoplay = "MoveRight"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(-4, -2.125)
+shape = SubResource("RectangleShape2D_ayo1u")
+
+[node name="CollisionBoundary" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBoundary"]
+position = Vector2(-4, -2)
 shape = SubResource("RectangleShape2D_ayo1u")

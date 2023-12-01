@@ -7,12 +7,14 @@ const weapon_radius: int = sqrt(pow(gun_fixed_point[0], 2) + pow(gun_fixed_point
 
 signal laser_appears(delta, direction: Vector2)
 
+var weapon_energy: int = 100
 @export var scale_lower_bound: Vector2 = Vector2(1.5, 1.5)
 @export var scale_upper_bound: Vector2 = Vector2(6.5, 6.5)
 @onready var player_node: CharacterBody2D = $".." # Retrieve player node to interact with it
 @onready var weapon_node: Node2D = $"."
 @onready var ScaleUp: AudioStreamPlayer2D = $Audio/ScaleUp
 @onready var ScaleDown: AudioStreamPlayer2D = $Audio/ScaleDown
+@onready var Laser: AudioStreamPlayer2D = $Audio/Laser
 @onready var weapon_sprite: Sprite2D = $Idle
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var projectile_scene: PackedScene = preload("res://Scale_Shooter/Scenes/Projectiles/projectile.tscn")
@@ -24,6 +26,7 @@ func _ready():
 	
 func _process(delta):
 	# Retrieve the current mouse position
+	#print("weapon scale: ", scale.x)
 	
 	# Receive potential input to scale the weapon
 	scale_weapon()
@@ -90,12 +93,18 @@ func weapon_vflip(prev_angle, angle):
 	prev_angle = angle * 180 / PI
 	
 func check_shoot(delta):
-	if (Input.is_action_just_pressed("Left Click")):
-		animation_player.play("Shoot")
+	# TODO add a shoot limit to how fast you can click the shoot button
+	if (Input.is_action_just_pressed("Left Click") && (weapon_energy) > 0):
+		weapon_energy -= 10
 		
-		#print(global_position)
+		animation_player.play("Shoot")
+		Laser.play()
+		
 		var weapon_direction: Vector2 = (global_position).normalized()
+		var weapon_scale: float = scale.x 
 		
 		var projectile = projectile_scene.instantiate()
 		add_child(projectile)
-		laser_appears.emit(delta, weapon_direction)
+		
+		var projectile_node: Node2D = get_node("Projectile")
+		projectile_node.process_moving_laser(weapon_scale)
